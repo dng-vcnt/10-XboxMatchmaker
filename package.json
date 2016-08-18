@@ -6,7 +6,7 @@
   "scripts": {
     "test": ""
   },
-  "author": "Ailuridaes <ailuridaes@gmail.com>, Vincent Duong <vduong178@gmail.com>",
+  "author": "Ailuridaes <ailuridaes@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "gulp": "^3.9.1",
@@ -16,5 +16,13 @@
     "gulp-open": "^2.0.0",
     "gulp-util": "^3.0.7",
     "wiredep": "^4.0.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dng-vcnt/10-Hackathon.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dng-vcnt/10-Hackathon/issues"
+  },
+  "homepage": "https://github.com/dng-vcnt/10-Hackathon#readme"
 }
