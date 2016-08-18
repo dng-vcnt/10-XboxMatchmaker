@@ -7,14 +7,28 @@
   <title>XBox Match</title>
 
   <!-- bower:css -->
-  <link rel="stylesheet" href="bower_components/bootstrap-css/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="bower_components/bootstrap-css/css/bootstrap.css" />
   <!-- endbower -->
   <!-- inject:css -->
   <link rel="stylesheet" href="css/style.css">
   <!-- endinject -->
 </head>
 <body ng-controller="XboxMatchController as ctrl">
-
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="jumbotron">
+          <h1>Match | XBOX</h1>
+          <h5>Meet your Xbox One Two Three? ;)</h5>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div ui-view></div>
+      </div>
+    </div>
+  </div>
 
 
 

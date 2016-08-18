@@ -1,7 +1,8 @@
 {
   "name": "hackathon",
   "authors": [
-    "Ailuridaes <ailuridaes@gmail.com>", "Vincent Duong <vduong178@gmail.com>"
+    "Ailuridaes <ailuridaes@gmail.com>",
+    "Vincent Duong <vduong178@gmail.com>"
   ],
   "description": "Seed for AngularJS web applications",
   "main": "app/index.html",
@@ -16,6 +17,13 @@
     "test",
     "tests"
   ],
+  "overrides": {
+    "bootstrap-css": {
+      "main": [
+        "css/bootstrap.css"
+      ]
+    }
+  },
   "dependencies": {
     "angular": "^1.5.8",
     "bootstrap-css": "^3.3.6"
