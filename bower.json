@@ -1,0 +1,23 @@
+{
+  "name": "hackathon",
+  "authors": [
+    "Ailuridaes <ailuridaes@gmail.com>", "Vincent Duong <vduong178@gmail.com>"
+  ],
+  "description": "Seed for AngularJS web applications",
+  "main": "app/index.html",
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "./app/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.8",
+    "bootstrap-css": "^3.3.6"
+  }
+}
