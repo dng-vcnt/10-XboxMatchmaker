@@ -13,13 +13,13 @@
   <link rel="stylesheet" href="css/style.css">
   <!-- endinject -->
 </head>
-<body ng-controller="XboxMatchController as ctrl">
+<body>
   <div class="container">
     <div class="row">
       <div class="col-xs-12">
         <div class="jumbotron">
           <h1>Match | XBOX</h1>
-          <h5>Meet your Xbox One Two Three? ;)</h5>
+          <h5>Meet your Xbox Squad ;)</h5>
         </div>
       </div>
     </div>
@@ -36,12 +36,14 @@
 
   <!-- bower:js -->
   <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
   <!-- endbower -->
   <!-- inject:js -->
   <script src="js/app.js"></script>
   <script src="secrets/keys.value.js"></script>
-  <script src="js/xbox-match.controller.js"></script>
-  <script src="js/xbox-match.factory.js"></script>
+  <script src="js/core/xbox-match.factory.js"></script>
+  <script src="js/match/xbox-match.controller.js"></script>
+  <script src="js/search/xbox-search.controller.js"></script>
   <!-- endinject -->
 </body>
 </html>

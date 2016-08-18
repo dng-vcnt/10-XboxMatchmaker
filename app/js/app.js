@@ -2,10 +2,11 @@
     'use strict';
 
     angular
-        .module('app', ['ui-router'])
+        .module('app', ['ui.router'])
         .value('xboxURL', 'https://xboxapi.com/v2/')
-        .config(function($urlRouteProvider, $stateProvider) {
-        	$urlRouterProvider.otherwise('/search');
+        .config(function($urlRouterProvider, $stateProvider) {
+
+        	 $urlRouterProvider.otherwise('/search');
            
            $stateProvider
            .state('search', {

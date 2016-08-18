@@ -5,10 +5,10 @@
         .module('app')
         .controller('XboxSearchController', XboxSearchController);
 
-    XboxSearchController.$inject = [];
+    XboxSearchController.$inject = ['$stateParams'];
 
     /* @ngInject */
-    function XboxSearchController() {
+    function XboxSearchController($stateParams) {
         var vm = this;
         vm.title = 'XboxSearchController';
 
