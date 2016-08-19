@@ -19,6 +19,7 @@
         ////////////////
 
         function activate() {
+            runLoader();
             console.log(vm.gamertag);
             xboxMatchFactory.getMatches(vm.gamertag).then (
                 function(data){
@@ -29,6 +30,15 @@
                     console.log(error);
                 }
             );
+        }
+
+        function runLoader() {
+            var timeout = setTimeout(showPage, 12000);
+        }
+
+        function showPage() {
+            document.getElementById("loader").style.display = "none";
+            document.getElementById("matches").style.display = "block";
         }
     }
 })();
