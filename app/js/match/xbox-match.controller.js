@@ -17,7 +17,7 @@
         ////////////////
 
         function activate() {
-        	xboxMatchFactory.getMatches('Ailuridaes');
+        	// xboxMatchFactory.getMatches('Ailuridaes');
         }
     }
 })();

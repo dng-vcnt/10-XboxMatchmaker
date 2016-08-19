@@ -2,3 +2,14 @@
 	background-color: #107C10;
 	color: #FFFFFF;
 }
+
+body {
+	background-image: url('http://diylogodesigns.com/blog/wp-content/uploads/2016/06/Xbox-360-logo-icon-png.png');
+	background-repeat: no-repeat;
+	background-position: right bottom;
+	background-attachment: fixed;
+}
+
+#searchBar {
+	opacity: 0.7;
+}
