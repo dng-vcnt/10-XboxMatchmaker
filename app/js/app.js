@@ -6,7 +6,7 @@
         .value('xboxURL', 'https://xboxapi.com/v2/')
         .config(function($urlRouterProvider, $stateProvider) {
 
-        	 $urlRouterProvider.otherwise('/search');
+        	 $urlRouterProvider.otherwise('/match');
            
            $stateProvider
            .state('search', {
