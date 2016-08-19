@@ -11,12 +11,14 @@
     function XboxSearchController($stateParams) {
         var vm = this;
         vm.title = 'XboxSearchController';
+        vm.gamertag;
 
         activate();
 
         ////////////////
 
         function activate() {
+
         }
     }
 })();

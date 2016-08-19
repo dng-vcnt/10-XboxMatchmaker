@@ -1,11 +1,13 @@
 <!--Search Start -->
 <div class="row">
   <div class="col-xs-12">
-    <form ng-submit="">
+    <form>
       <div class="input-group">
-        <input id="searchBar" type="text" class="form-control">
+        <input id="searchBar" type="text" class="form-control" 
+          ng-model="search.gamertag">
         <span class="input-group-btn">
-          <button class="btn btn-success" type="submit">Go!</button>
+          <button class="btn btn-success" type="submit" 
+          ui-sref='match({ gamertag: search.gamertag })'>Go!</button>
         </span>
       </div>
     </form>

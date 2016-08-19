@@ -5,19 +5,21 @@
         .module('app')
         .controller('XboxMatchController', XboxMatchController);
 
-    XboxMatchController.$inject = ['xboxMatchFactory'];
+    XboxMatchController.$inject = ['xboxMatchFactory', '$stateParams'];
 
     /* @ngInject */
-    function XboxMatchController(xboxMatchFactory) {
+    function XboxMatchController(xboxMatchFactory, $stateParams) {
         var vm = this;
         vm.title = 'XboxMatchController';
+        vm.gamertag = $stateParams.gamertag;
 
         activate();
 
         ////////////////
 
         function activate() {
-        	// xboxMatchFactory.getMatches('Ailuridaes');
+            xboxMatchFactory.getMatches(vm.gamertag);
+
         }
     }
 })();
