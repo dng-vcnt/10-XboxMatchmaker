@@ -48,9 +48,15 @@
                     $q.all(promises).then(
                         function(values) {
                             //get friends of friends
-                            getFriendsOfFriends(friendsArray);
-                            defer.resolve();
+                            getFriendsOfFriends(friendsArray).then(
+                                function(matches) {
+                                // success! return matches
+                                defer.resolve(matches);
+                            }, function(error){
+                                defer.reject(error)
+                            });
                         },
+                        // failure callback for promises array
                         function(error){
                             defer.reject(error);
                         }
@@ -77,7 +83,6 @@
 				})
             .then(
 				function(response) {
-					console.log(response.data.xuid);
 					return response.data.xuid;
 				},
 				function(response){
@@ -158,11 +163,12 @@
                 promises.push(getFriends(arr[i].id, true));
             }
 
-            $q.all(promises).then(function(values){
+            return $q.all(promises).then(function(values){
                 for (var i = 0; i < values.length; i++){
                     friendsOfFriends = friendsOfFriends.concat(values[i]);
                 }
                 console.log(friendsOfFriends);
+                return friendsOfFriends;
             });
         }
 
