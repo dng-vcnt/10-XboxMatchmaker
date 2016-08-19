@@ -23,7 +23,7 @@
             xboxMatchFactory.getMatches(vm.gamertag).then (
                 function(data){
                     vm.xboxTeam = data;
-                    console.log(vm.xboxTeam);
+                    // console.log(vm.xboxTeam);
                 },
                 function(error){
                     console.log(error);
