@@ -15,7 +15,7 @@
                controller: 'XboxSearchController as search'
            })
            .state('match', {
-               url: '/match',
+               url: '/match/:gamertag',
                templateUrl: '/js/match/match.html',
                controller: 'XboxMatchController as detail'            
            })

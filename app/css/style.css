@@ -11,9 +11,21 @@
 	src: url(X360.ttf);
 }
 
-.jumbotron {
+.well {
 	background-color: var(--xbox-green);
 	color: var(--xbox-white);
+}
+
+#logo {
+	height: 40px;
+	width: 40px;
+	vertical-align: middle;
+}
+
+h1 {
+	display: inline-block;
+	vertical-align: middle;
+	line-height: 40px
 }
 
 body {
