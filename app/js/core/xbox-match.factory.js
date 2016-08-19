@@ -157,17 +157,37 @@
         function getFriendsOfFriends(arr) {
             var friendsOfFriends = [];
 
+            // number of friends to get friends of
+            var limit = 5;
+
+            //randomize which friends to search friends of
+            var randomFriends = [];
+            if (arr.length > limit) {
+                var index;
+                var i = 0;
+                while (i < limit) {
+                    index = Math.floor(Math.random() * arr.length);
+                    if (randomFriends.indexOf(arr[index]) === -1) {
+                        randomFriends.push(arr[index]);
+                        i++;
+                    }
+                }
+            } else {
+                randomFriends = arr;
+            }
+
+            console.log(randomFriends);
+
             var promises = [];
 
-            for (var i = 0; i < 3; i++) {
-                promises.push(getFriends(arr[i].id, true));
+            for (var i = 0; i < randomFriends.length; i++) {
+                promises.push(getFriends(randomFriends[i].id, true));
             }
 
             return $q.all(promises).then(function(values){
                 for (var i = 0; i < values.length; i++){
                     friendsOfFriends = friendsOfFriends.concat(values[i]);
                 }
-                console.log(friendsOfFriends);
                 return friendsOfFriends;
             });
         }
