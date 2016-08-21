@@ -21,25 +21,19 @@
 
         function activate() {
             console.log(vm.gamertag);
+            // Get matches. Send call to factory to make API calls
             xboxMatchFactory.getMatches(vm.gamertag).then (
                 function(data){
+                    // Success. Populate matches into array
                     vm.xboxTeam = data;
                     vm.load = true;
                     console.log(vm.xboxTeam);
                 },
                 function(error){
+                    // Error
                     console.log(error);
                 }
             );
         }
-
-        // function runLoader() {
-        //     var timeout = setTimeout(showPage, 12000);
-        // }
-
-        // function showPage() {
-        //     document.getElementById("loader").style.display = "none";
-        //     document.getElementById("matches").style.display = "block";
-        // }
     }
 })();

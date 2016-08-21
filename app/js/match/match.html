@@ -1,5 +1,9 @@
 <div>
+	<!-- Load spinner start -->
 	<div id="loader" ng-hide="match.load"></div>
+	<!-- Load spinner end -->
+	
+	<!-- Display matches start -->
 	<div id="matches" class="row animate-bottom" ng-show="match.load">
 		<div class="col-xs-12 col-md-4" ng-repeat="player in match.xboxTeam">
 			<div class="panel panel-default">
@@ -21,4 +25,5 @@
 			<a ui-sref="search">Back to search</a>
 		</div>
 	</div>
+	<!-- Display matches end -->
 </div>
