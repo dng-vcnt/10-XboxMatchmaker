@@ -1,5 +1,5 @@
 <div>
-	<div id="loader" ng-hide="match.load"></div>
+	<div id="loader" ng-hide="match.load ||	match.errorMsg.length"></div>
 	<div id="matches" class="row animate-bottom" ng-show="match.load">
 		<div class="col-xs-12 col-md-4" ng-repeat="player in match.xboxTeam">
 			<div class="panel panel-default">
@@ -17,8 +17,11 @@
 				</div>
 			</div>
 		</div>
-		<div class="text-center col-xs-12">
-			<a ui-sref="search">Back to search</a>
-		</div>
+	</div>
+	<div class="error" ng-show="match.errorMsg.length">
+		{{match.errorMsg}}
+	</div>
+	<div class="text-center col-xs-12" ng-show="match.load ||	match.errorMsg.length">
+		<a ui-sref="search">Back to search</a>
 	</div>
 </div>
