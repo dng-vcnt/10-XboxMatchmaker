@@ -50,8 +50,12 @@
                             //get friends of friends
                             getFriendsOfFriends(friendsArray).then(
                                 function(matches) {
-                                // success! return matches
-                                defer.resolve(matches);
+                                    if (!matches.length) {
+                                        defer.reject("Sorry, our algorithm could not match you. Please try again.");
+                                        return;
+                                    }
+                                    // success! return matches
+                                    defer.resolve(matches);
                             }, function(error){
                                 defer.reject(error)
                             });

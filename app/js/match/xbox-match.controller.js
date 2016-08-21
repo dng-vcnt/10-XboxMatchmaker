@@ -30,7 +30,7 @@
                 function(error){
                     console.log(error);
                     if (error === "XUID not found") {
-                        vm.errorMsg = "Could not find " + vm.gamertag + "!"
+                        vm.errorMsg = "Could not find " + vm.gamertag + "! Please check your gamertag and try again."
                     } else {
                     vm.errorMsg = error;
                     }

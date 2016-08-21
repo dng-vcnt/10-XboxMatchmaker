@@ -18,8 +18,10 @@
 			</div>
 		</div>
 	</div>
-	<div class="error" ng-show="match.errorMsg.length">
-		{{match.errorMsg}}
+	<div class="alert alert-danger" role="alert" ng-show="match.errorMsg.length">
+	  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+	  <span class="sr-only">Error:</span>
+	  Error: {{match.errorMsg}}
 	</div>
 	<div class="text-center col-xs-12" ng-show="match.load ||	match.errorMsg.length">
 		<a ui-sref="search">Back to search</a>
