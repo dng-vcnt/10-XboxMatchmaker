@@ -1,8 +1,9 @@
 <div>
+
 	<!-- Load spinner start -->
-	<div id="loader" ng-hide="match.load"></div>
+	<div id="loader" ng-hide="match.load ||	match.errorMsg.length"></div>
 	<!-- Load spinner end -->
-	
+
 	<!-- Display matches start -->
 	<div id="matches" class="row animate-bottom" ng-show="match.load">
 		<div class="col-xs-12 col-md-4" ng-repeat="player in match.xboxTeam">
@@ -21,9 +22,17 @@
 				</div>
 			</div>
 		</div>
-		<div class="text-center col-xs-12">
-			<a ui-sref="search">Back to search</a>
-		</div>
 	</div>
 	<!-- Display matches end -->
+	<!-- Error message start -->
+	<div class="alert alert-danger" role="alert" ng-show="match.errorMsg.length">
+	  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+	  <span class="sr-only">Error:</span>
+	  Error: {{match.errorMsg}}
+	</div>
+	<!-- Error message end -->
+	<!-- Back to search -->
+	<div class="text-center col-xs-12" ng-show="match.load ||	match.errorMsg.length">
+		<a ui-sref="search">Back to search</a>
+	</div>
 </div>

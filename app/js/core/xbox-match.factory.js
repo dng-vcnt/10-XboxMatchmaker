@@ -50,8 +50,12 @@
                             //get friends of friends
                             getFriendsOfFriends(friendsArray).then(
                                 function(matches) {
-                                // success! return matches
-                                defer.resolve(matches);
+                                    if (!matches.length) {
+                                        defer.reject("Sorry, our algorithm could not match you. Please try again.");
+                                        return;
+                                    }
+                                    // success! return matches
+                                    defer.resolve(matches);
                             }, function(error){
                                 defer.reject(error)
                             });
@@ -69,27 +73,29 @@
             );
 
             return defer.promise;
-            //TODO: add $q.defer, defer.reject if error returned at any point
         }
 
 
         // Retrieve xbox user id, passing in gamertag
         function getXboxId(gamertag) {
         	var query = 'xuid/' + gamertag;
+            var defer = $q.defer();
 
-        	return $http.get(xboxURL + query, {
+        	$http.get(xboxURL + query, {
         		headers: { 'X-Auth': xboxKey,
         				'Content-Type': 'application/json' }
 				})
             .then(
 				function(response) {
-					return response.data.xuid;
+					defer.resolve(response.data.xuid);
 				},
 				function(response){
 					console.log(response.data.error_message);
-                    return response.data.error_message;
+                    defer.reject(response.data.error_message);
 				}
 			);
+
+            return defer.promise;
         }
 
         // Get gamer info (sets gamerscore)
@@ -113,7 +119,9 @@
         function getFriends(xboxId, isFilter) {
             var query = xboxId + "/friends";
 
-            return $http.get(xboxURL + query, {
+            var defer = $q.defer();
+
+            $http.get(xboxURL + query, {
         		headers: { 'X-Auth': xboxKey,
         			'Content-Type': 'application/json' }
 				})
@@ -121,9 +129,24 @@
 				function(response) {
                     var friendsArray = [];
 
-                    // check for error code (private friends list?)
-                    if(response.data.code === 1029){
-                        return friendsArray;
+                    // check for error code
+                    if(typeof response.data.code !== 'undefined'){
+                        if (isFilter) {
+                            // getting friends of friends, allow to ignore error
+                            defer.resolve(friendsArray);
+                            return;
+                        } else if (response.data.code === 1029) {
+                            // cannot get friends list
+                            defer.reject("Your account info is private!");
+                            return;
+                        } else if (response.data.code === 8) {
+                            // friends list is empty
+                            defer.reject("You have no friends :'( (lol)");
+                            return;
+                        } else {
+                            defer.reject(response.data.description);
+                            return;
+                        }
                     }
 
                     if (isFilter) {
@@ -144,13 +167,15 @@
                         friendsArray = response.data;
                     }
 
-					return friendsArray;
+					defer.resolve(friendsArray);
 				},
 				function(response){
 					console.log(response.data.error_message);
-                    return response.data.error_message;
+                    defer.reject(response.data.error_message);
 				}
 			);
+
+            return defer.promise;
         }
 
         // Get matches from list of friends of friends
@@ -176,20 +201,27 @@
                 randomFriends = arr;
             }
 
-            console.log(randomFriends);
-
             var promises = [];
 
             for (var i = 0; i < randomFriends.length; i++) {
                 promises.push(getFriends(randomFriends[i].id, true));
             }
 
-            return $q.all(promises).then(function(values){
-                for (var i = 0; i < values.length; i++){
-                    friendsOfFriends = friendsOfFriends.concat(values[i]);
+            var defer = $q.defer();
+
+            $q.all(promises).then(
+                function(values){
+                    for (var i = 0; i < values.length; i++){
+                        friendsOfFriends = friendsOfFriends.concat(values[i]);
+                    }
+                    defer.resolve(friendsOfFriends);
+                },
+                function(error){
+                    defer.reject(error);
                 }
-                return friendsOfFriends;
-            });
+            );
+
+            return defer.promise;
         }
 
         // determine what range to use for matching based on gamerscore

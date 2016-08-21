@@ -54,6 +54,12 @@ body {
   margin-bottom: 4em;
 }
 
+.alert-danger {
+  background-color: rgba(255,255,255,0.7);
+  font-size: 1.5em;
+  border: 2px solid #a94442;
+}
+
 #loader {
   position: absolute;
   left: 50%;

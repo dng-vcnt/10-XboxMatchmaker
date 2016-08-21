@@ -14,13 +14,13 @@
         vm.gamertag = $stateParams.gamertag;
         vm.xboxTeam = [];
         vm.load = false;
+        vm.errorMsg = "";
 
         activate();
 
         ////////////////
 
         function activate() {
-            console.log(vm.gamertag);
             // Get matches. Send call to factory to make API calls
             xboxMatchFactory.getMatches(vm.gamertag).then (
                 function(data){
@@ -32,6 +32,11 @@
                 function(error){
                     // Error
                     console.log(error);
+                    if (error === "XUID not found") {
+                        vm.errorMsg = "Could not find " + vm.gamertag + "! Please check your gamertag and try again."
+                    } else {
+                        vm.errorMsg = error;
+                    }
                 }
             );
         }
