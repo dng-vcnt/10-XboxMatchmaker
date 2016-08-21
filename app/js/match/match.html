@@ -1,28 +1,24 @@
-
-<div onload="loader()">
-<div id="loader"></div>
-
-<div id="matches" class="row animate-bottom">
-	<div class="col-xs-12 col-md-4" ng-repeat="player in detail.xboxTeam">
-		<div class="panel panel-default">
-			<div class="panel-heading panel-heading-custom">
-				<h4 class="panel-title">Player Information</h4>
-			</div>
-			<div class="panel-body">
-				<div class="row">
-					<div class="col-xs-12 text-center">
-						<img ng-src="http://avatar.xboxlive.com/avatar/{{player.Gamertag}}/avatar-body.png">
-						<h3>{{player.Gamertag}}</h3>
-						<h4>Gamer Score: {{player.Gamerscore}}</h4>
+<div>
+	<div id="loader" ng-hide="match.load"></div>
+	<div id="matches" class="row animate-bottom" ng-show="match.load">
+		<div class="col-xs-12 col-md-4" ng-repeat="player in match.xboxTeam">
+			<div class="panel panel-default">
+				<div class="panel-heading panel-heading-custom">
+					<h4 class="panel-title">Player Information</h4>
+				</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-xs-12 text-center">
+							<img ng-src="http://avatar.xboxlive.com/avatar/{{player.Gamertag}}/avatar-body.png">
+							<h3>{{player.Gamertag}}</h3>
+							<h4>Gamer Score: {{player.Gamerscore}}</h4>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+		<div class="text-center col-xs-12">
+			<a ui-sref="search">Back to search</a>
+		</div>
 	</div>
-	<div class="text-center col-xs-12">
-		<a ui-sref="search">Back to search</a>
-	</div>
-</div>
-
-
 </div>

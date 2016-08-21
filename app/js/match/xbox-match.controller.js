@@ -13,17 +13,18 @@
         vm.title = 'XboxMatchController';
         vm.gamertag = $stateParams.gamertag;
         vm.xboxTeam = [];
+        vm.load = false;
 
         activate();
 
         ////////////////
 
         function activate() {
-            runLoader();
             console.log(vm.gamertag);
             xboxMatchFactory.getMatches(vm.gamertag).then (
                 function(data){
                     vm.xboxTeam = data;
+                    vm.load = true;
                     console.log(vm.xboxTeam);
                 },
                 function(error){
@@ -32,13 +33,13 @@
             );
         }
 
-        function runLoader() {
-            var timeout = setTimeout(showPage, 12000);
-        }
+        // function runLoader() {
+        //     var timeout = setTimeout(showPage, 12000);
+        // }
 
-        function showPage() {
-            document.getElementById("loader").style.display = "none";
-            document.getElementById("matches").style.display = "block";
-        }
+        // function showPage() {
+        //     document.getElementById("loader").style.display = "none";
+        //     document.getElementById("matches").style.display = "block";
+        // }
     }
 })();

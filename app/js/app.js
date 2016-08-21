@@ -17,7 +17,7 @@
            .state('match', {
                url: '/match/:gamertag',
                templateUrl: '/js/match/match.html',
-               controller: 'XboxMatchController as detail'            
+               controller: 'XboxMatchController as match'            
            })
         });
 })();
