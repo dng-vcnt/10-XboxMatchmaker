@@ -16,3 +16,11 @@ XBox Live Matchmaker uses [XBoxAPI](https://xboxapi.com/) to find new matches fo
 Use of XBoxAPI requires an API key, which the app expects as a value named "xboxKey". Users can sign up for a free or paid XboxAPI account [here](https://xboxapi.com/register).
 
 After cloning and supplying an API key, run `bower install`, `npm install` and then `gulp serve` to run on localhost. Serving defaults to port 8080, which is configurable in the gulpfile in the 'connect' task.
+
+## Screenshots
+
+![Search](http://imgur.com/oCuUZwb.png)
+
+
+
+![Results](http://imgur.com/nYQGcAQ.png)
